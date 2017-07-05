@@ -1,10 +1,16 @@
-FROM node:6-alpine
+FROM node:8-alpine
 
-LABEL authors="Alejandro Such <alejandro.such@gmail.com> , Mihai Bob <mihai.m.bob@gmail.com>"
+LABEL authors="Alejandro Such <alejandro.such@gmail.com> , Mihai Bob <mihai.m.bob@gmail.com>, Dmitry Erman <dmitry.erman@gmail.com>"
 
-RUN apk update \
+RUN apk update \ 
+  && apk upgrade \
   && apk add --update alpine-sdk \
-  && npm install -g @angular/cli@1.1.3 \
+  && add --no-cache bash git openssh \
+  && apk add --update curl \
+  && apk add --update zip \
+  && apk add --update sshpass \
+  && apk add --update rsync \
+  && npm install -g @angular/cli@1.2.0 \
   && ng set --global packageManager=yarn \
   && apk del alpine-sdk \
   && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
