@@ -2,7 +2,7 @@ FROM node:8-alpine
 
 LABEL authors="Alejandro Such <alejandro.such@gmail.com> , Mihai Bob <mihai.m.bob@gmail.com>, Dmitry Erman <dmitry.erman@gmail.com>"
 
-RUN apk update \ 
+RUN apk update \
   && apk upgrade \
   && apk add --update alpine-sdk \
   && add --no-cache bash git openssh \
